@@ -2,145 +2,162 @@
 import React, { useState, useEffect } from 'react';
 
 export default function VixenMasterFinal() {
-  // --- STATES FOR SALES PSYCHOLOGY ---
-  const [stats, setStats] = useState({ sent: 1842, profit: 12450, slots: 5 });
+  // --- 1. CONFIGURATION (Apne Links Update Karein) ---
+  const AFFILIATE_LINK = "https://systeme.io/?sa=sa026984945780d4279e42aa7f2fb45eb698a43702"; 
+  const BLUEPRINT_LINK = "https://systeme.io/vixen-blueprint"; // $19 Checkout Link
+  const TELEGRAM_USER = "https://t.me/mantupatra"; // Aapka Telegram Handle
+
+  // --- 2. STATES FOR PSYCHOLOGY & LIVE STATS ---
+  const [stats, setStats] = useState({ sent: 1864, profit: 12600, slots: 5 });
   const [terminalLog, setTerminalLog] = useState("Initializing VIXEN Core...");
   const [showProof, setShowProof] = useState(false);
   const [activeProof, setActiveProof] = useState("");
 
   const logs = [
-    "Targeting: KuCoin_Whales...", "Injecting Llama3 Closing Logic...", 
+    "Targeting: KuCoin_Whales...", "Injecting Llama3 Logic...", 
     "User Match: Michael_UK detected.", "Redirecting to Vercel Bridge...", 
-    "Connection Secured: AES-256", "AI Status: Generating Pitch..."
+    "Connection Secured: AES-256", "AI Status: Generating Pitch...",
+    "Scanning SaaS_Builders_USA...", "Payload Delivered Successfully."
   ];
 
   const proofs = [
-    "Retro_UK just earned $150 commission", 
-    "New license activated in London", 
+    "Sarah just earned $450 commission", 
+    "New system clone in London (UK)", 
     "Blueprint sold to Founder_X ($19)", 
-    "Sarah just cloned the engine"
+    "Mantu AI Dashboard Sync: 100%",
+    "Lead from NYC successfully closed"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setStats(prev => ({
-        sent: prev.sent + Math.floor(Math.random() * 5),
-        profit: prev.profit + (Math.random() > 0.95 ? 150 : 0),
-        slots: prev.slots > 1 && Math.random() > 0.98 ? prev.slots - 1 : prev.slots
+        sent: prev.sent + Math.floor(Math.random() * 5) + 1,
+        profit: prev.profit + (Math.random() > 0.96 ? 150 : 0),
+        slots: prev.slots > 1 && Math.random() > 0.99 ? prev.slots - 1 : prev.slots
       }));
       setTerminalLog(logs[Math.floor(Math.random() * logs.length)]);
-      if (Math.random() > 0.8) {
+      
+      if (Math.random() > 0.85) {
         setActiveProof(proofs[Math.floor(Math.random() * proofs.length)]);
         setShowProof(true);
         setTimeout(() => setShowProof(false), 4000);
       }
-    }, 8000); 
+    }, 7000); 
     return () => clearInterval(interval);
   }, []);
-
-  const AFFILIATE_LINK = "https://systeme.io/?sa=sa026984945780d4279e42aa7f2fb45eb698a43702"; 
 
   return (
     <main className="vixen-root">
       <style jsx global>{`
         body { margin: 0; background: #000; font-family: 'JetBrains Mono', monospace; color: #fff; overflow-x: hidden; }
         .vixen-root { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; position: relative; }
-        .bg-glow { position: absolute; top: 0; left: 50%; width: 100%; height: 100%; background: radial-gradient(circle at 50% 10%, rgba(59,130,246,0.15) 0%, transparent 60%); transform: translateX(-50%); pointer-events: none; }
+        .bg-glow { position: absolute; top: 0; left: 50%; width: 100%; height: 100%; background: radial-gradient(circle at 50% 10%, rgba(59,130,246,0.12) 0%, transparent 60%); transform: translateX(-50%); pointer-events: none; z-index: 0; }
         
-        .main-container { width: 100%; max-width: 1100px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 60px; z-index: 1; align-items: center; }
-        .info-side { flex: 1; min-width: 320px; }
-        .card-side { flex: 1; min-width: 320px; max-width: 440px; background: rgba(8,8,8,0.9); padding: 35px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(25px); }
+        .hero-container { width: 100%; max-width: 1100px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 60px; z-index: 1; align-items: center; margin-bottom: 80px; }
+        .info-side { flex: 1.2; min-width: 320px; }
+        .card-side { flex: 1; min-width: 320px; max-width: 440px; background: rgba(10,10,10,0.8); padding: 40px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(30px); box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
 
-        .title { font-size: clamp(38px, 5vw, 65px); font-weight: 900; line-height: 1; margin-bottom: 25px; letter-spacing: -3px; }
-        .blue-glow { color: #3b82f6; text-shadow: 0 0 30px rgba(59,130,246,0.5); }
-        .badge { font-size: 10px; letter-spacing: 4px; color: #333; font-weight: 900; margin-bottom: 20px; }
+        .badge { font-size: 10px; letter-spacing: 4px; color: #333; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
+        .main-title { font-size: clamp(38px, 6vw, 65px); font-weight: 900; line-height: 1; margin: 0 0 25px 0; letter-spacing: -3px; }
+        .blue-gradient { color: #3b82f6; text-shadow: 0 0 30px rgba(59,130,246,0.5); }
+        .hero-desc { color: #666; font-size: 16px; line-height: 1.7; margin-bottom: 40px; max-width: 500px; }
 
-        .terminal { background: #000; border: 1px solid #111; border-radius: 15px; overflow: hidden; margin-bottom: 25px; text-align: left; }
-        .t-header { background: #080808; padding: 10px 15px; display: flex; justify-content: space-between; border-bottom: 1px solid #111; }
-        .t-body { padding: 20px; font-size: 11px; color: #4ade80; min-height: 38px; }
+        .terminal { background: #000; border: 1px solid #111; border-radius: 20px; overflow: hidden; margin-bottom: 25px; text-align: left; }
+        .t-header { background: #080808; padding: 12px 15px; display: flex; justify-content: space-between; border-bottom: 1px solid #111; }
+        .t-body { padding: 25px; font-size: 12px; color: #4ade80; min-height: 40px; font-family: 'Courier New', monospace; }
 
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
-        .stat-box-big { grid-column: span 2; background: #050505; border: 1px solid #111; padding: 25px; border-radius: 20px; }
-        .stat-box-small { background: #050505; border: 1px solid #111; padding: 15px; border-radius: 18px; }
-        .stat-label { font-size: 8px; color: #333; font-weight: bold; margin-bottom: 10px; display: block; }
-        
-        /* Product Cards Section */
-        .products-row { width: 100%; max-width: 1100px; margin-top: 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; z-index: 1; }
-        .product-card { background: #080808; border: 1px solid #111; padding: 30px; border-radius: 30px; transition: 0.3s; }
-        .product-card:hover { border-color: #3b82f6; }
-        .price { color: #4ade80; font-size: 28px; font-weight: 900; margin: 20px 0; display: block; }
+        .stat-main { grid-column: span 2; background: #000; border: 1px solid #1a1a1a; padding: 25px; border-radius: 25px; text-align: center; }
+        .stat-sub { background: #000; border: 1px solid #1a1a1a; padding: 18px; border-radius: 20px; text-align: center; }
+        .label { font-size: 8px; color: #333; font-weight: bold; margin-bottom: 10px; display: block; letter-spacing: 1px; }
 
-        .main-cta { display: block; background: #fff; color: #000; padding: 22px; border-radius: 22px; text-decoration: none; font-weight: 900; text-align: center; font-size: 17px; box-shadow: 0 10px 30px rgba(255,255,255,0.1); }
-        .secondary-cta { display: block; background: #111; color: #fff; padding: 15px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 800; font-size: 13px; }
+        .revenue-section { width: 100%; max-width: 1100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; z-index: 1; }
+        .product-card { background: #0a0a0a; border: 1px solid #111; padding: 35px; border-radius: 35px; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s ease; }
+        .product-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .price-text { color: #4ade80; font-size: 32px; font-weight: 900; margin: 20px 0; display: block; }
 
-        .notification { position: fixed; top: 30px; right: 30px; background: #0a0a0a; border: 1px solid #222; padding: 15px 25px; border-radius: 15px; font-size: 12px; z-index: 1000; transition: 0.6s; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .btn-primary { display: block; background: #fff; color: #000; padding: 22px; border-radius: 22px; text-decoration: none; font-weight: 900; text-align: center; font-size: 18px; transition: 0.2s; }
+        .btn-secondary { display: block; background: #111; color: #fff; padding: 18px; border-radius: 18px; text-decoration: none; text-align: center; font-weight: 800; font-size: 14px; margin-top: 20px; }
+        .btn-blue { background: #3b82f6; color: #fff; }
+
+        .notif-popup { position: fixed; bottom: 30px; left: 30px; background: #0d0d0d; border: 1px solid #222; padding: 15px 25px; border-radius: 15px; font-size: 12px; z-index: 1000; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 50px rgba(0,0,0,0.7); }
 
         @media (max-width: 900px) {
-          .main-container { flex-direction: column; text-align: center; }
-          .info-side { text-align: center; }
-          .card-side { max-width: 100%; }
-          .vixen-root { padding-top: 80px; }
+          .hero-container { flex-direction: column; text-align: center; margin-bottom: 50px; }
+          .info-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
+          .card-side { max-width: 100%; width: 100%; box-sizing: border-box; }
         }
       `}</style>
 
       <div className="bg-glow"></div>
-      <div className="notification" style={{ opacity: showProof ? 1 : 0, transform: showProof ? 'translateX(0)' : 'translateX(50px)' }}>
+      
+      {/* --- Live Proof Notification --- */}
+      <div className="notif-popup" style={{ opacity: showProof ? 1 : 0, transform: showProof ? 'translateY(0)' : 'translateY(100px)' }}>
         <span style={{ color: '#4ade80', marginRight: '10px' }}>●</span> {activeProof}
       </div>
 
-      <div className="main-container">
+      <div className="hero-container">
+        {/* --- Information Side --- */}
         <div className="info-side">
-          <div className="badge">SYSTEM IDENTITY: VIXEN_OS_V4</div>
-          <h1 className="title">Autonomous <br/><span className="blue-glow">Revenue</span> Engine</h1>
-          <p style={{ color: '#555', lineHeight: '1.7', maxWidth: '500px', marginBottom: '40px' }}>
-            The elite AI infrastructure for high-ticket SaaS & Crypto closures. Currently hunting USA/UK whales with 100% autonomy.
+          <div className="badge">Project Identity // VIXEN_OS_V4</div>
+          <h1 className="main-title">Autonomous <br/><span className="blue-gradient">Revenue</span> Engine</h1>
+          <p className="hero-desc">
+            The elite AI infrastructure for high-ticket SaaS & Crypto closures. Currently sniper-targeting whales in USA/UK markets with 100% autonomy. Built for founders, by Mantu AI.
           </p>
-          <div className="terminal">
-            <div className="t-header"><div style={{display:'flex', gap:5}}><div style={{width:6,height:6,background:'#222',borderRadius:'50%'}}></div><div style={{width:6,height:6,background:'#222',borderRadius:'50%'}}></div></div><span style={{fontSize:8, color:'#333'}}>VIXEN_CORE_LOGS</span></div>
+          <div className="terminal" style={{width: '100%', maxWidth: '500px'}}>
+            <div className="t-header">
+              <div style={{display:'flex', gap:6}}>
+                <div style={{width:7,height:7,background:'#ff5f56',borderRadius:'50%'}}></div>
+                <div style={{width:7,height:7,background:'#ffbd2e',borderRadius:'50%'}}></div>
+                <div style={{width:7,height:7,background:'#27c93f',borderRadius:'50%'}}></div>
+              </div>
+              <span style={{fontSize:9, color:'#444', fontWeight:'bold'}}>LIVE_CORE_FEED</span>
+            </div>
             <div className="t-body">{terminalLog}</div>
           </div>
         </div>
 
+        {/* --- Main Stats Card --- */}
         <div className="card-side">
           <div className="stats-grid">
-            <div className="stat-box-big">
-              <span className="stat-label">TOTAL NETWORK PROFIT (USD)</span>
-              <span style={{ fontSize: '38px', fontWeight: 900, color: '#4ade80' }}>${stats.profit.toLocaleString()}</span>
+            <div className="stat-main">
+              <span className="label">TOTAL NETWORK PROFIT (USD)</span>
+              <span style={{ fontSize: '42px', fontWeight: 900, color: '#4ade80' }}>${stats.profit.toLocaleString()}</span>
             </div>
-            <div className="stat-box-small">
-              <span className="stat-label">MESSAGES</span>
-              <span style={{ fontSize: '20px', fontWeight: 800 }}>{stats.sent.toLocaleString()}</span>
+            <div className="stat-sub">
+              <span className="label">MESSAGES</span>
+              <span style={{ fontSize: '22px', fontWeight: 800 }}>{stats.sent.toLocaleString()}</span>
             </div>
-            <div className="stat-box-small">
-              <span className="stat-label">FOUNDER SLOTS</span>
-              <span style={{ fontSize: '20px', fontWeight: 800, color: '#ff4b2b' }}>{stats.slots}</span>
+            <div className="stat-sub">
+              <span className="label">FOUNDER SLOTS</span>
+              <span style={{ fontSize: '22px', fontWeight: 800, color: '#ff4b2b' }}>{stats.slots}</span>
             </div>
           </div>
-          <a href={AFFILIATE_LINK} className="main-cta">CLONE THIS SYSTEM NOW 🚀</a>
+          <a href={AFFILIATE_LINK} className="btn-primary">CLONE THIS SYSTEM NOW 🚀</a>
         </div>
       </div>
 
-      {/* --- REVENUE STREAMS SECTION --- */}
-      <div className="products-row">
+      {/* --- Revenue Stream Options --- */}
+      <div className="revenue-section">
         <div className="product-card">
-          <div style={{fontSize:10, color:'#333', marginBottom:15}}>LOW-TICKET ASSET</div>
-          <h3 style={{margin:0, fontSize:22}}>The VIXEN Blueprint</h3>
-          <p style={{fontSize:13, color:'#555', margin:'15px 0'}}>Learn the exact AI-to-Telegram logic behind this engine. Start without cloning.</p>
-          <span className="price">$19.00</span>
-          <a href={AFFILIATE_LINK} className="secondary-cta">GET THE GUIDE</a>
+          <div className="badge" style={{color:'#444'}}>Digital Guide</div>
+          <h3 style={{margin:'10px 0', fontSize:24}}>The VIXEN Blueprint</h3>
+          <p style={{fontSize:13, color:'#555', margin:'0'}}>Don't want to clone? Learn the exact AI-to-Telegram sniper logic behind this engine.</p>
+          <span className="price-text">$19.00</span>
+          <a href={BLUEPRINT_LINK} className="btn-secondary">GET THE BLUEPRINT</a>
         </div>
 
-        <div className="product-card" style={{borderColor: 'rgba(59,130,246,0.3)'}}>
-          <div style={{fontSize:10, color:'#3b82f6', marginBottom:15}}>MONTHLY RENTAL</div>
-          <h3 style={{margin:0, fontSize:22}}>Engine Hosting (SaaS)</h3>
-          <p style={{fontSize:13, color:'#555', margin:'15px 0'}}>We host your sniper. We manage the Groq AI. You keep 100% of the profits.</p>
-          <span className="price">$99/mo</span>
-          <a href="https://t.me/your_username" className="secondary-cta" style={{background:'#3b82f6'}}>RESERVE SLOT</a>
+        <div className="product-card" style={{border: '1px solid rgba(59,130,246,0.2)'}}>
+          <div className="badge" style={{color:'#3b82f6'}}>Managed SaaS</div>
+          <h3 style={{margin:'10px 0', fontSize:24}}>Engine Hosting</h3>
+          <p style={{fontSize:13, color:'#555', margin:'0'}}>We host your sniper and manage the Groq AI logic for you. You keep 100% of commissions.</p>
+          <span className="price-text">$99/mo</span>
+          <a href={TELEGRAM_USER} className="btn-secondary btn-blue">RESERVE MY SLOT</a>
         </div>
       </div>
 
-      <footer style={{marginTop:80, fontSize:10, color:'#111', letterSpacing:3}}>
-        USA_UK_TERMINAL // SECURE_ACCESS_V4 // BY MANTU AI
+      <footer style={{marginTop:100, fontSize:9, color:'#222', letterSpacing:4, textAlign:'center', textTransform:'uppercase'}}>
+        USA_UK_TERMINAL // SECURE_V4 // MANTU AI FOUNDER EDITION
       </footer>
     </main>
   );
