@@ -1,65 +1,107 @@
-import Image from "next/image";
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 
-export default function Home() {
+export default function VixenBridgeFinal() {
+  const [stats, setStats] = useState({ sent: '1,240+', replies: '89' });
+  
+  // Aapka Updated Affiliate Link
+  const AFFILIATE_LINK = "https://systeme.io/?sa=sa026984945780d4279e42aa7f2fb45eb698a43702"; 
+
+  // Backend URL for Live Proof
+  const API_URL = "https://vixen-nkjh.onrender.com/api/stats";
+
+  useEffect(() => {
+    const fetchLiveStats = async () => {
+      try {
+        const res = await fetch(API_URL);
+        const json = await res.json();
+        if(json.messages_sent) {
+            setStats({ 
+              sent: json.messages_sent.toLocaleString(), 
+              replies: json.ai_replies.toLocaleString() 
+            });
+        }
+      } catch (e) { console.log("Syncing with VIXEN Engine..."); }
+    };
+    fetchLiveStats();
+    const interval = setInterval(fetchLiveStats, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="container">
+      <Head>
+        <title>VIXEN OS | Founder Case Study</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      <div className="glass-card">
+        <div className="badge">PRIVATE FOUNDER ACCESS</div>
+        
+        <h1 className="title">
+          How I Automated <span className="blue-text">$1,200/Day</span> 
+          with Autonomous AI
+        </h1>
+
+        <p className="subtitle">
+          The VIXEN Engine is currently live, sniper-targeting high-ticket whales in USA/UK markets.
+        </p>
+
+        <div className="proof-box">
+          <div className="proof-header">
+            <span className="dot"></span>
+            LIVE ENGINE STATUS: <span className="green-text">ACTIVE</span>
+          </div>
+          <div className="stat-row">
+            <span>Network Messages:</span>
+            <span className="white-text">{stats.sent}</span>
+          </div>
+          <div className="stat-row">
+            <span>AI Sales Closures:</span>
+            <span className="white-text">{stats.replies}</span>
+          </div>
+          <div className="progress-bar">
+            <div className="progress-fill"></div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+        <ul className="features">
+          <li>✅ No Manual Outreach Required</li>
+          <li>✅ Groq-Llama3 Sales Intelligence</li>
+          <li>✅ 100% Mobile Managed (Termux)</li>
+        </ul>
+
+        <a href={AFFILIATE_LINK} className="cta-button">
+          CLONE THIS SYSTEM NOW 🚀
+          <span className="cta-sub">Instant Access to Mantu AI Infrastructure</span>
+        </a>
+
+        <p className="footer-note">
+          *System limit: 5 new licenses per 24 hours.
+        </p>
+      </div>
+
+      <style jsx>{`
+        .container { min-height: 100vh; background: #000; display: flex; align-items: center; justify-content: center; padding: 20px; font-family: sans-serif; color: #fff; }
+        .glass-card { background: #080808; border: 1px solid #111; padding: 40px 25px; border-radius: 35px; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .badge { font-size: 10px; letter-spacing: 3px; color: #3b82f6; font-weight: 900; margin-bottom: 25px; }
+        .title { font-size: 26px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .blue-text { color: #3b82f6; }
+        .subtitle { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 30px; }
+        .proof-box { background: #000; border: 1px solid #1a1a1a; padding: 20px; border-radius: 20px; text-align: left; margin-bottom: 30px; }
+        .proof-header { font-size: 11px; font-weight: 800; color: #333; display: flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; box-shadow: 0 0 10px #4ade80; }
+        .green-text { color: #4ade80; }
+        .stat-row { display: flex; justify-content: space-between; font-size: 13px; color: #444; margin-bottom: 8px; }
+        .white-text { color: #fff; font-weight: bold; font-family: monospace; }
+        .progress-bar { width: 100%; height: 4px; background: #0a0a0a; border-radius: 10px; margin-top: 15px; overflow: hidden; }
+        .progress-fill { width: 85%; height: 100%; background: #3b82f6; box-shadow: 0 0 10px #3b82f6; }
+        .features { text-align: left; margin-bottom: 35px; list-style: none; padding: 0; }
+        .features li { font-size: 13px; color: #888; margin-bottom: 12px; }
+        .cta-button { display: block; background: #fff; color: #000; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: 900; }
+        .cta-sub { display: block; font-size: 9px; font-weight: 400; opacity: 0.5; margin-top: 4px; }
+        .footer-note { font-size: 9px; color: #1a1a1a; margin-top: 25px; font-weight: bold; letter-spacing: 1px; }
+      `}</style>
     </div>
   );
 }
